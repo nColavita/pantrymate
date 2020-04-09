@@ -16,7 +16,10 @@ class RecipeInfo extends Component {
                 tabIndex="-1"
                 role="dialog"
             >
-                <div className="modal-dialog" role="document">
+                <div
+                    className="modal-dialog modal-dialog-scrollable"
+                    role="document"
+                >
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title">
@@ -43,14 +46,18 @@ class RecipeInfo extends Component {
                                             >
                                                 <h4>{ingredient.name}</h4>{' '}
                                                 <span>
-                                                    {ingredient.amount}
-                                                    {ingredient.unit}
+                                                    {ingredient.amount}{' '}
+                                                    <strong>
+                                                        {ingredient.unit}
+                                                    </strong>
                                                 </span>
                                             </li>
                                         );
                                     }
                                 )}
                             </ul>
+                            <hr />
+                            <p>{this.props.recipe.instructions}</p>
                         </div>
                         <div className="modal-footer">
                             <a

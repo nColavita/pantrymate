@@ -29,7 +29,7 @@ class App extends Component {
         // Gather searches from App State
         const searchTermsValidated = this.state.searchValue;
         // Hit the Spoonacular Find By Ingredient API
-        const recipeAPI = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchTermsValidated}&number=2&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
+        const recipeAPI = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchTermsValidated}&number=10&instructionsRequired=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
         axios
             .get(recipeAPI)
             .then((response) => this.setState({ recipes: response.data }))
