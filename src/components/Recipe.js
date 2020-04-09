@@ -7,13 +7,20 @@ class Recipe extends Component {
                 <img
                     className="card-img-top"
                     src={this.props.recipe.image}
+                    alt=""
                 ></img>
                 <div className="card-body">
                     <h5 className="card-title">{this.props.recipe.title}</h5>
                     <ul className="list-group list-group-flush"></ul>
-                    <a href="#" className="btn btn-primary">
+                    <button
+                        className="btn btn-primary"
+                        onClick={this.props.getRecipe.bind(
+                            this,
+                            this.props.recipe.id
+                        )}
+                    >
                         View Recipe
-                    </a>
+                    </button>
                 </div>
             </div>
         );
