@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 
 class IngredientSearch extends Component {
     render() {
+        const { submitSearch, searchValue, handleChange } = this.props;
         return (
             <form className="form-inline">
                 <div className="form-group" style={style.formGroup}>
                     <input
-                        value={this.props.searchValue}
-                        onChange={this.props.handleChange}
+                        value={searchValue}
+                        onChange={handleChange}
                         id="ingredientInput"
                         type="text"
                         className="form-control mr-4"
-                        placeholder="What's in your pantry...(ex: pork, thyme, butter)"
+                        placeholder="What's in your pantry...(e.g. pork, thyme, butter)"
                         style={style.inputStyle}
                         name="ingredientList"
                     />
                     <button
-                        onClick={this.props.submitSearch}
+                        onClick={submitSearch}
                         className="btn btn-primary"
                         style={style.btnStyle}
                     >

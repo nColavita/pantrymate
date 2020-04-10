@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 
 class RecipeInfo extends Component {
-    getStyle = () => {
-        return {
+    getStyle = {
+        modal: {
             backgroundColor: 'rgba(0,0,0,0.75)',
             display: 'unset',
-        };
+        },
+        p: {
+            display: 'inline-block',
+        },
+        span: {
+            float: 'right',
+        },
     };
 
     render() {
+        const { recipe, closeModal } = this.props;
         return (
             <div
-                style={this.getStyle()}
+                style={this.getStyle.modal}
                 className="modal"
                 tabIndex="-1"
                 role="dialog"
@@ -22,11 +29,9 @@ class RecipeInfo extends Component {
                 >
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">
-                                {this.props.recipe.title}
-                            </h5>
+                            <h5 className="modal-title">{recipe.title}</h5>
                             <button
-                                onClick={this.props.closeModal}
+                                onClick={closeModal}
                                 type="button"
                                 className="close"
                                 data-dismiss="modal"
@@ -37,17 +42,21 @@ class RecipeInfo extends Component {
                         </div>
                         <div className="modal-body">
                             <ul className="list-group">
-                                {this.props.recipe.extendedIngredients.map(
+                                {recipe.extendedIngredients.map(
                                     (ingredient) => {
                                         return (
                                             <li
                                                 key={ingredient.name}
                                                 className="list-group-item"
                                             >
-                                                <h4>{ingredient.name}</h4>{' '}
-                                                <span>
-                                                    {ingredient.amount}{' '}
+                                                <p style={this.getStyle.p}>
+                                                    {ingredient.name}
+                                                </p>{' '}
+                                                <span
+                                                    style={this.getStyle.span}
+                                                >
                                                     <strong>
+                                                        {ingredient.amount}{' '}
                                                         {ingredient.unit}
                                                     </strong>
                                                 </span>
@@ -57,12 +66,13 @@ class RecipeInfo extends Component {
                                 )}
                             </ul>
                             <hr />
-                            <p>{this.props.recipe.instructions}</p>
+                            <p>{recipe.instructions}</p>
                         </div>
                         <div className="modal-footer">
                             <a
-                                href={this.props.recipe.sourceUrl}
+                                href={recipe.sourceUrl}
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 Recipe Website
                             </a>

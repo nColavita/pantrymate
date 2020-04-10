@@ -4,13 +4,10 @@ import Recipe from './Recipe';
 
 class Recipes extends Component {
     render() {
-        return this.props.recipes.map((recipe) => (
-            <div className="d-inline-flex">
-                <Recipe
-                    key={recipe.id}
-                    recipe={recipe}
-                    getRecipe={this.props.getRecipe}
-                />
+        const { recipes, getRecipe } = this.props;
+        return recipes.map((recipe) => (
+            <div className="d-inline-flex mt-4">
+                <Recipe key={recipe.id} recipe={recipe} getRecipe={getRecipe} />
             </div>
         ));
     }
