@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Recipe extends Component {
     render() {
@@ -26,6 +27,11 @@ const style = {
         width: '18rem',
         margin: '0.25em',
     },
+};
+
+Recipe.propTypes = {
+    recipe: PropTypes.object.isRequired,
+    getRecipe: PropTypes.func.isRequired,
 };
 
 export default Recipe;
