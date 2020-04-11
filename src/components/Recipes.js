@@ -6,9 +6,7 @@ class Recipes extends Component {
     render() {
         const { recipes, getRecipe } = this.props;
         return recipes.map((recipe) => (
-            <div key={recipe.id} className="d-inline-flex mt-4">
-                <Recipe recipe={recipe} getRecipe={getRecipe} />
-            </div>
+            <Recipe key={recipe.id} recipe={recipe} getRecipe={getRecipe} />
         ));
     }
 }

@@ -6,11 +6,11 @@ class RecipeInfo extends Component {
             backgroundColor: 'rgba(0,0,0,0.75)',
             display: 'unset',
         },
-        p: {
-            display: 'inline-block',
-        },
         span: {
             float: 'right',
+        },
+        hr: {
+            background: '#3333',
         },
     };
 
@@ -47,26 +47,32 @@ class RecipeInfo extends Component {
                                         return (
                                             <li
                                                 key={ingredient.name}
-                                                className="list-group-item"
+                                                className="list-group-item text-left"
                                             >
-                                                <p style={this.getStyle.p}>
-                                                    {ingredient.name}
+                                                <p className="text-left p-10 m-0 d-inline">
+                                                    <strong>
+                                                        {ingredient.name}
+                                                    </strong>
                                                 </p>{' '}
                                                 <span
                                                     style={this.getStyle.span}
                                                 >
-                                                    <strong>
-                                                        {ingredient.amount}{' '}
-                                                        {ingredient.unit}
-                                                    </strong>
+                                                    {ingredient.amount}{' '}
+                                                    {ingredient.unit}
                                                 </span>
                                             </li>
                                         );
                                     }
                                 )}
                             </ul>
-                            <hr />
-                            <p>{recipe.instructions}</p>
+                            <h3 className="text-left my-3">Instructions:</h3>
+                            <hr
+                                className="m-0"
+                                style={{ background: '#CFCFCF' }}
+                            />
+                            <p className="text-left p-10 mt-3">
+                                {recipe.instructions}
+                            </p>
                         </div>
                         <div className="modal-footer">
                             <a

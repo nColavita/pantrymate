@@ -72,18 +72,20 @@ class App extends Component {
         }
 
         return (
-            <div className="container">
+            <div className="container text-center">
                 <Header />
                 <IngredientSearch
                     searchValue={this.state.searchValue}
                     handleChange={this.handleChange}
                     submitSearch={this.submitSearch}
                 />
-                <Recipes
-                    recipes={this.state.recipes}
-                    getRecipe={this.getRecipe}
-                />
-                {recipeModal}
+                <div className="flex mt-4">
+                    <Recipes
+                        recipes={this.state.recipes}
+                        getRecipe={this.getRecipe}
+                    />
+                    {recipeModal}
+                </div>
             </div>
         );
     }
