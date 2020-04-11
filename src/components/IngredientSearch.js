@@ -33,13 +33,4 @@ class IngredientSearch extends Component {
     }
 }
 
-// const style = {
-//     inputStyle: {
-//         width: '65%',
-//     },
-//     btnStyle: {
-//         fontSize: '1em',
-//     },
-// };
-
 export default IngredientSearch;

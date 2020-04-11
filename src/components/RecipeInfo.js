@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class RecipeInfo extends Component {
-    getStyle = {
-        modal: {
-            backgroundColor: 'rgba(0,0,0,0.75)',
-            display: 'unset',
-        },
-        span: {
-            float: 'right',
-        },
-        hr: {
-            background: '#3333',
-        },
-    };
-
     render() {
         const { recipe, closeModal } = this.props;
         return (
             <div
-                style={this.getStyle.modal}
+                style={getStyle.modal}
                 className="modal"
                 tabIndex="-1"
                 role="dialog"
@@ -54,9 +42,7 @@ class RecipeInfo extends Component {
                                                         {ingredient.name}
                                                     </strong>
                                                 </p>{' '}
-                                                <span
-                                                    style={this.getStyle.span}
-                                                >
+                                                <span style={getStyle.span}>
                                                     {ingredient.amount}{' '}
                                                     {ingredient.unit}
                                                 </span>
@@ -89,5 +75,23 @@ class RecipeInfo extends Component {
         );
     }
 }
+
+const getStyle = {
+    modal: {
+        backgroundColor: 'rgba(0,0,0,0.75)',
+        display: 'unset',
+    },
+    span: {
+        float: 'right',
+    },
+    hr: {
+        background: '#3333',
+    },
+};
+
+RecipeInfo.propTypes = {
+    recipe: PropTypes.object.isRequired,
+    closeModal: PropTypes.func.isRequired,
+};
 
 export default RecipeInfo;
