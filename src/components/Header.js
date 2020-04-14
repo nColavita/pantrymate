@@ -3,8 +3,11 @@ import React from 'react';
 function Header() {
     return (
         <div>
-            <h2 className="mt-4">
-                Pantrymate |{' '}
+            <h2 className="mt-4" style={setStyle.h2}>
+                Pantrymate{' '}
+                <span className="text-muted" style={setStyle.seperator}>
+                    |
+                </span>{' '}
                 <span className="text-muted">lets get cooking!</span>
             </h2>
             <p className="text-muted">
@@ -14,5 +17,15 @@ function Header() {
         </div>
     );
 }
+
+const setStyle = {
+    h2: {
+        color: '#008B8B	',
+        fontSize: '4em',
+    },
+    seperator: {
+        fontWeight: '200',
+    },
+};
 
 export default Header;

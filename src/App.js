@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import Nav from './components/Nav';
 import Header from './components/Header';
 import IngredientSearch from './components/IngredientSearch';
+import NutritionalSearch from './components/NutritionalSearch';
 import Recipes from './components/Recipes';
 import RecipeInfo from './components/RecipeInfo';
 
@@ -14,6 +17,9 @@ class App extends Component {
         recipes: [],
         recipe: [],
         viewRecipe: false,
+        Cuisine: '',
+        Diet: '',
+        Intolerance: '',
     };
 
     handleChange = (e) => {
@@ -22,6 +28,10 @@ class App extends Component {
         } else {
             this.setState({ searchValue: e.target.value });
         }
+    };
+
+    handleNutritionSelectionChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
     };
 
     submitSearch = (e) => {
@@ -33,6 +43,20 @@ class App extends Component {
         axios
             .get(recipeAPI)
             .then((response) => this.setState({ recipes: response.data }))
+            // .then((response) => console.log(response))
+            .catch((err) => console.log(err));
+    };
+
+    submitNutritionSearch = (e) => {
+        e.preventDefault();
+        // Hit the Spoonacular Find By Ingredient API
+        const recipeAPI = `https://api.spoonacular.com/recipes/complexSearch?cuisine=${this.state.Cuisine}&diet=${this.state.Diet}&intolerances=${this.state.Intolerance}&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
+        axios
+            .get(recipeAPI)
+            .then((response) =>
+                this.setState({ recipes: response.data.results })
+            )
+            // .then((response) => console.log(response))
             .catch((err) => console.log(err));
     };
 
@@ -57,8 +81,6 @@ class App extends Component {
     };
 
     render() {
-        // render is the only required lifecycle method
-
         // Conditional Component Rendering of Modal
         let recipeModal = null;
         if (this.state.viewRecipe) {
@@ -72,21 +94,54 @@ class App extends Component {
         }
 
         return (
-            <div className="container text-center">
-                <Header />
-                <IngredientSearch
-                    searchValue={this.state.searchValue}
-                    handleChange={this.handleChange}
-                    submitSearch={this.submitSearch}
-                />
-                <div className="flex mt-4">
-                    <Recipes
-                        recipes={this.state.recipes}
-                        getRecipe={this.getRecipe}
-                    />
-                    {recipeModal}
+            <Router>
+                <div className="App">
+                    <Nav />
+                    <div className="container text-center">
+                        <Header />
+                        <Route
+                            exact // only loads the contained components
+                            path="/"
+                            render={(props) => (
+                                <React.Fragment>
+                                    <IngredientSearch
+                                        searchValue={this.state.searchValue}
+                                        handleChange={this.handleChange}
+                                        submitSearch={this.submitSearch}
+                                    />
+                                </React.Fragment>
+                            )}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/nutritionalsearch"
+                            render={(props) => (
+                                <React.Fragment>
+                                    <NutritionalSearch
+                                        handleNutritionSelectionChange={
+                                            this.handleNutritionSelectionChange
+                                        }
+                                    />
+                                    <button
+                                        type="Submit"
+                                        className="btn btn-primary mt-4"
+                                        onClick={this.submitNutritionSearch}
+                                    >
+                                        Submit
+                                    </button>
+                                </React.Fragment>
+                            )}
+                        ></Route>
+                        <div className="flex mt-4">
+                            <Recipes
+                                recipes={this.state.recipes}
+                                getRecipe={this.getRecipe}
+                            />
+                            {recipeModal}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Router>
         );
     }
 }
