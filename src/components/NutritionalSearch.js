@@ -76,16 +76,14 @@ class NutritionalSearch extends Component {
 
     render() {
         return this.fields.map((field) => (
-            <React.Fragment>
-                <NutritionalSearchField
-                    id={field.id}
-                    name={field.name}
-                    searchItems={field.searchItems}
-                    handleNutritionSelectionChange={
-                        this.props.handleNutritionSelectionChange
-                    }
-                />
-            </React.Fragment>
+            <NutritionalSearchField
+                id={field.id}
+                name={field.name}
+                searchItems={field.searchItems}
+                handleNutritionSelectionChange={
+                    this.props.handleNutritionSelectionChange
+                }
+            />
         ));
     }
 }

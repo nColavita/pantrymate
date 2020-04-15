@@ -116,7 +116,7 @@ class App extends Component {
                             exact
                             path="/nutritionalsearch"
                             render={(props) => (
-                                <React.Fragment>
+                                <div className="container">
                                     <NutritionalSearch
                                         handleNutritionSelectionChange={
                                             this.handleNutritionSelectionChange
@@ -127,9 +127,9 @@ class App extends Component {
                                         className="btn btn-primary mt-4"
                                         onClick={this.submitNutritionSearch}
                                     >
-                                        Submit
+                                        Find recipes!
                                     </button>
-                                </React.Fragment>
+                                </div>
                             )}
                         ></Route>
                         <div className="flex mt-4">

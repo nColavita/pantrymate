@@ -24,7 +24,7 @@ class IngredientSearch extends Component {
                             onClick={submitSearch}
                             className="btn btn-primary btn-md"
                         >
-                            Search
+                            Find recipes!
                         </button>
                     </div>
                 </form>

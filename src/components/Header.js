@@ -8,10 +8,14 @@ function Header() {
                 <span className="text-muted" style={setStyle.seperator}>
                     |
                 </span>{' '}
-                <span className="text-muted">lets get cooking!</span>
+                <span style={setStyle.tagline} className="text-muted">
+                    lets get cooking!
+                </span>
             </h2>
             <p className="text-muted">
-                Find amazing recipes using the ingredients you already have.
+                Find amazing recipes using the ingredients you already have.{' '}
+                <br></br>You can also search for delicious recipes by
+                nutritional or dietary restrictions!
             </p>
             <br></br>
         </div>
@@ -20,10 +24,13 @@ function Header() {
 
 const setStyle = {
     h2: {
-        color: '#008B8B	',
+        color: '#52b3a2',
         fontSize: '4em',
     },
     seperator: {
+        fontWeight: '200',
+    },
+    tagline: {
         fontWeight: '200',
     },
 };

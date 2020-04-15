@@ -1,3 +1,32 @@
 body {
-    background: rgb(243, 243, 243);
+    background: #e7e7e7;
+}
+
+a {
+    transition: color 0.25s;
+}
+
+a:hover {
+    color: #65ce65 !important;
+}
+a:active {
+    color: #65ce65 !important;
+}
+
+a::before {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #46998a;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #3e887a;
 }

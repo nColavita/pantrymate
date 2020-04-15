@@ -5,8 +5,11 @@ class NutritionalSearchField extends Component {
     render() {
         return (
             <div id={this.props.id} className="form-group text-left">
-                <label htmlFor={this.props.name}>{this.props.name}</label>
+                <label className="text-muted" htmlFor={this.props.name}>
+                    {this.props.name}
+                </label>
                 <select
+                    style={{ fontWeight: '400' }}
                     className="form-control"
                     name={this.props.name}
                     onChange={this.props.handleNutritionSelectionChange}
