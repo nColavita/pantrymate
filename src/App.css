@@ -30,3 +30,6 @@ a::before {
 .btn-primary:hover {
     background-color: #3e887a;
 }
+.btn-primary:active {
+    background-color: #3e887a;
+}

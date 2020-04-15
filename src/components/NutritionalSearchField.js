@@ -1,27 +1,42 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import NutritionalSearchItem from './NutritionalSearchItem';
 
 class NutritionalSearchField extends Component {
     render() {
+        const {
+            id,
+            name,
+            handleNutritionSelectionChange,
+            searchItems,
+        } = this.props;
         return (
-            <div id={this.props.id} className="form-group text-left">
-                <label className="text-muted" htmlFor={this.props.name}>
-                    {this.props.name}
+            <div id={id} className="form-group text-left">
+                <label className="text-muted" htmlFor={name}>
+                    {name}
                 </label>
                 <select
                     style={{ fontWeight: '400' }}
                     className="form-control"
-                    name={this.props.name}
-                    onChange={this.props.handleNutritionSelectionChange}
+                    name={name}
+                    onChange={handleNutritionSelectionChange}
                 >
                     <NutritionalSearchItem
-                        id={this.props.name}
-                        searchItems={this.props.searchItems}
+                        id={name}
+                        searchItems={searchItems}
                     />
                 </select>
             </div>
         );
     }
 }
+
+NutritionalSearchField.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    searchItems: PropTypes.array.isRequired,
+    handleNutritionSelectionChange: PropTypes.func.isRequired,
+};
 
 export default NutritionalSearchField;

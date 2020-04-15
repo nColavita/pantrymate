@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class NutritionalSearchItem extends Component {
     render() {
-        return this.props.searchItems.map((searchItem) => {
+        const { searchItems } = this.props;
+        return searchItems.map((searchItem) => {
             return <option value={searchItem}>{searchItem}</option>;
         });
     }
 }
+
+NutritionalSearchItem.propTypes = {
+    searchItems: PropTypes.array.isRequired,
+};
 
 export default NutritionalSearchItem;

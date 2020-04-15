@@ -66,7 +66,7 @@ class RecipeInfo extends Component {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Recipe Website
+                                <strong>Recipe Website ></strong>
                             </a>
                         </div>
                     </div>

@@ -103,33 +103,25 @@ class App extends Component {
                             exact // only loads the contained components
                             path="/"
                             render={(props) => (
-                                <React.Fragment>
-                                    <IngredientSearch
-                                        searchValue={this.state.searchValue}
-                                        handleChange={this.handleChange}
-                                        submitSearch={this.submitSearch}
-                                    />
-                                </React.Fragment>
+                                <IngredientSearch
+                                    searchValue={this.state.searchValue}
+                                    handleChange={this.handleChange}
+                                    submitSearch={this.submitSearch}
+                                />
                             )}
                         ></Route>
                         <Route
                             exact
                             path="/nutritionalsearch"
                             render={(props) => (
-                                <div className="container">
-                                    <NutritionalSearch
-                                        handleNutritionSelectionChange={
-                                            this.handleNutritionSelectionChange
-                                        }
-                                    />
-                                    <button
-                                        type="Submit"
-                                        className="btn btn-primary mt-4"
-                                        onClick={this.submitNutritionSearch}
-                                    >
-                                        Find recipes!
-                                    </button>
-                                </div>
+                                <NutritionalSearch
+                                    handleNutritionSelectionChange={
+                                        this.handleNutritionSelectionChange
+                                    }
+                                    submitNutritionSearch={
+                                        this.submitNutritionSearch
+                                    }
+                                />
                             )}
                         ></Route>
                         <div className="flex mt-4">
