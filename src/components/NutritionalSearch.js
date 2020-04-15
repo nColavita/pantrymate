@@ -76,6 +76,10 @@ class NutritionalSearch extends Component {
         },
     ];
 
+    componentDidMount() {
+        this.props.handlePageChange();
+    }
+
     render() {
         const {
             handleNutritionSelectionChange,

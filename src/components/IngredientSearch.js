@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class IngredientSearch extends Component {
+    componentDidMount() {
+        this.props.handlePageChange();
+    }
+
     render() {
         const { submitSearch, searchValue, handleChange } = this.props;
         return (

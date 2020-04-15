@@ -22,6 +22,19 @@ class App extends Component {
         Intolerance: '',
     };
 
+    handlePageChange = () => {
+        // Reset state on page change
+        this.setState({
+            searchValue: '',
+            recipes: [],
+            recipe: [],
+            viewRecipe: false,
+            Cuisine: '',
+            Diet: '',
+            Intolerance: '',
+        });
+    };
+
     handleChange = (e) => {
         if (e.target.value === '') {
             this.setState({ searchValue: '' });
@@ -107,6 +120,7 @@ class App extends Component {
                                     searchValue={this.state.searchValue}
                                     handleChange={this.handleChange}
                                     submitSearch={this.submitSearch}
+                                    handlePageChange={this.handlePageChange}
                                 />
                             )}
                         ></Route>
@@ -121,6 +135,7 @@ class App extends Component {
                                     submitNutritionSearch={
                                         this.submitNutritionSearch
                                     }
+                                    handlePageChange={this.handlePageChange}
                                 />
                             )}
                         ></Route>
