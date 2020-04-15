@@ -6,13 +6,12 @@ import NutritionalSearchItem from './NutritionalSearchItem';
 class NutritionalSearchField extends Component {
     render() {
         const {
-            id,
             name,
             handleNutritionSelectionChange,
             searchItems,
         } = this.props;
         return (
-            <div id={id} className="form-group text-left">
+            <div className="form-group text-left">
                 <label className="text-muted" htmlFor={name}>
                     {name}
                 </label>
@@ -22,10 +21,7 @@ class NutritionalSearchField extends Component {
                     name={name}
                     onChange={handleNutritionSelectionChange}
                 >
-                    <NutritionalSearchItem
-                        id={name}
-                        searchItems={searchItems}
-                    />
+                    <NutritionalSearchItem searchItems={searchItems} />
                 </select>
             </div>
         );
@@ -33,7 +29,6 @@ class NutritionalSearchField extends Component {
 }
 
 NutritionalSearchField.propTypes = {
-    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     searchItems: PropTypes.array.isRequired,
     handleNutritionSelectionChange: PropTypes.func.isRequired,

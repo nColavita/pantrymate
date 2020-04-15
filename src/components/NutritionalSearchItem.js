@@ -5,7 +5,11 @@ class NutritionalSearchItem extends Component {
     render() {
         const { searchItems } = this.props;
         return searchItems.map((searchItem) => {
-            return <option value={searchItem}>{searchItem}</option>;
+            return (
+                <option key={searchItem} value={searchItem}>
+                    {searchItem}
+                </option>
+            );
         });
     }
 }

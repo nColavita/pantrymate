@@ -88,7 +88,7 @@ class NutritionalSearch extends Component {
             >
                 {this.fields.map((field) => (
                     <NutritionalSearchField
-                        id={field.id}
+                        key={field.id}
                         name={field.name}
                         searchItems={field.searchItems}
                         handleNutritionSelectionChange={
