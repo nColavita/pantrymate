@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Header from './components/Header';
-import IngredientSearch from './components/IngredientSearch';
-import NutritionalSearch from './components/NutritionalSearch';
-import Recipes from './components/Recipes';
-import RecipeInfo from './components/RecipeInfo';
+import IngredientSearch from './components/ingredientSearch/IngredientSearch';
+import NutritionalSearch from './components/nutritionalSearch/NutritionalSearch';
+import Recipes from './components/recipe/Recipes';
+import RecipeInfo from './components/recipe/RecipeInfo';
 
 import './App.css';
 
@@ -52,7 +52,7 @@ class App extends Component {
         // Gather searches from App State
         const searchTermsValidated = this.state.searchValue;
         // Hit the Spoonacular Find By Ingredient API
-        const recipeAPI = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchTermsValidated}&number=10&instructionsRequired=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
+        const recipeAPI = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchTermsValidated}&number=50&instructionsRequired=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
         axios
             .get(recipeAPI)
             .then((response) => this.setState({ recipes: response.data }))
@@ -63,7 +63,7 @@ class App extends Component {
     submitNutritionSearch = (e) => {
         e.preventDefault();
         // Hit the Spoonacular Find By Ingredient API
-        const recipeAPI = `https://api.spoonacular.com/recipes/complexSearch?cuisine=${this.state.Cuisine}&diet=${this.state.Diet}&intolerances=${this.state.Intolerance}&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
+        const recipeAPI = `https://api.spoonacular.com/recipes/complexSearch?cuisine=${this.state.Cuisine}&diet=${this.state.Diet}&intolerances=${this.state.Intolerance}&number=50&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`;
         axios
             .get(recipeAPI)
             .then((response) =>
